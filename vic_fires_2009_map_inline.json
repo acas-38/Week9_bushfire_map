@@ -3,7 +3,7 @@
   "width": 860,
   "height": 600,
   "config": { "view": { "stroke": null } },
-  "projection": { "type": "mercator","center": [134, -28],   // roughly the middle of Australia
+  "projection": { "type": "mercator","center": [134, -28],   
   "scale": 850  },
   "title": "Victoria bushfires (2009) — area burnt (ha)",
   "layer": [
@@ -23,7 +23,7 @@
       "mark": { "type": "geoshape", "fill": "#f6f6f6", "stroke": "#666", "strokeWidth": 0.6 }
     },
 
-    /* ---------- NEW: State / Territory outlines ---------- */
+
     {
       "name": "state_borders",
       "data": {
@@ -33,7 +33,7 @@
       "mark": { "type": "geoshape", "filled": false, "stroke": "#374151", "strokeWidth": 1 }
     },
 
-    /* ---------- NEW: State / Territory labels ---------- */
+  
     {
       "name": "state_labels",
       "data": {
@@ -57,7 +57,7 @@
       }
     },
 
-    /* ---------- Your fire points ---------- */
+ 
     {
       "name": "fires2009_points",
       "data": {
