@@ -1,9 +1,10 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 860,
   "height": 600,
   "config": { "view": { "stroke": null } },
-  "projection": { "type": "mercator" },
+  "projection": { "type": "mercator","center": [134, -28],   // roughly the middle of Australia
+  "scale": 850  },
   "title": "Victoria bushfires (2009) — area burnt (ha)",
   "layer": [
     { "name": "ocean", "data": { "sphere": {} }, "mark": { "type": "geoshape", "fill": "#dbeefb" } },
