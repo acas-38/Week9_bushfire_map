@@ -1,0 +1,130 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 860,
+  "height": 600,
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "title": "Victoria bushfires (2009) \u2014 area burnt (ha)",
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.id == 36"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f6f6f6",
+        "stroke": "#bbbbbb"
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "fire_id": "101245",
+            "year": 2009,
+            "fire_type": "Wildfire",
+            "severity": "Severe",
+            "area_ha": 5400,
+            "lon": 147.3,
+            "lat": -37.0
+          },
+          {
+            "fire_id": "101246",
+            "year": 2009,
+            "fire_type": "Wildfire",
+            "severity": "Extreme",
+            "area_ha": 8750,
+            "lon": 148.1,
+            "lat": -36.5
+          },
+          {
+            "fire_id": "101247",
+            "year": 2009,
+            "fire_type": "Planned burn",
+            "severity": "",
+            "area_ha": 320,
+            "lon": 145.0,
+            "lat": -38.05
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "toNumber(datum.year) == 2009"
+        },
+        {
+          "calculate": "toNumber(datum.area_ha)",
+          "as": "area_ha_num"
+        },
+        {
+          "filter": "datum.area_ha_num > 0"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "area_ha_num",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "range": [
+              10,
+              1000
+            ]
+          },
+          "title": "Area (ha)"
+        },
+        "color": {
+          "field": "fire_type",
+          "type": "nominal",
+          "title": "Fire type"
+        },
+        "tooltip": [
+          {
+            "field": "fire_id",
+            "title": "Fire ID"
+          },
+          {
+            "field": "fire_type",
+            "title": "Type"
+          },
+          {
+            "field": "severity",
+            "title": "Severity"
+          },
+          {
+            "field": "area_ha_num",
+            "title": "Area (ha)",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}
